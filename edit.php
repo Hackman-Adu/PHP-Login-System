@@ -11,7 +11,7 @@ if (!isset($_SESSION['username'])) {
 <html lang="en">
 
 <head>
-    <title>Update Patient Information</title>
+    <title>Edit Patient Information</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
