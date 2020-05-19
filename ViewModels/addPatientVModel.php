@@ -24,8 +24,12 @@ if (isset($_POST['add_patient_btn'])) {
         $ln = mysqli_real_escape_string($connection, $_POST['lastname']);
         $di = mysqli_real_escape_string($connection, $_POST['diseases']);
         $full = date("F d, Y h:i:s A", time());
-        $sqlstatement = "INSERT INTO patients(firstname,lastname,disease,pay_date)VALUES('$fn','$ln','$di','$full')";
-        $query = mysqli_query($connection, $sqlstatement);
+
+        for ($i = 0; $i <= 400; $i++) {
+            $sqlstatement = "INSERT INTO patients(firstname,lastname,disease,pay_date)VALUES('$fn','$ln','$di','$full')";
+            $query = mysqli_query($connection, $sqlstatement);
+        }
+
         if ($query == true) {
             $Inserted = true;
             $succesMessage = "New Patient Added!";

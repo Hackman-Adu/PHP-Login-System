@@ -7,6 +7,7 @@ if (isset($_GET['logout'])) {
     session_destroy();
 }
 
+
 ?>
 <html lang="en">
 

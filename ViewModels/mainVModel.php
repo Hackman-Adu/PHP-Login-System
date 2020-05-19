@@ -14,3 +14,15 @@ if (isset($_POST['delAll'])) {
         header("Location:main.php");
     }
 }
+if (isset($_GET['id'])) {
+    $deleteId = $_GET['id'];
+    $sql = "DELETE FROM patients WHERE patient_id=?";
+    $stmt = mysqli_stmt_init($connection);
+    if (!mysqli_stmt_prepare($stmt, $sql)) {
+    } else {
+        mysqli_stmt_bind_param($stmt, "s", $deleteId);
+        if (mysqli_stmt_execute($stmt)) {
+            header("Location:main.php");
+        }
+    }
+}
