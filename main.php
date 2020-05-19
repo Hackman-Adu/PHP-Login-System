@@ -25,38 +25,42 @@ if (!isset($_SESSION['username'])) {
         <div class="container-fluid">
             <div class="row text-center">
                 <div class="col-12 table-responsive">
-                    <table class="table table-striped table-hover shadow-sm">
-                        <thead class="thead-dark text-left">
-                            <th>Date</th>
-                            <th>First Name</th>
-                            <th>Last Name</th>
-                            <th>Disease</th>
-                            <th colspan="2">
-                                <a class="btn btn-primary" href="main.php?del=*">Delete All</a>
-                            </th>
-                            <th>
+                    <?php if ($number_rows == 0) { ?>
+                        <h4 class="lead text-danger"><b>No records found</b></h4>
+                    <?php  } else { ?>
+                        <table class="table table-striped table-hover shadow-sm">
+                            <thead class="thead-dark text-left">
+                                <th>Date</th>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Disease</th>
+                                <th colspan="2">
+                                    <a class="btn btn-primary" href="main.php?delete_all">Delete All</a>
+                                </th>
+                                <th>
 
-                            </th>
-                        </thead>
-                        <tbody>
-                            <?php while ($patient = mysqli_fetch_array($result)) { ?>
-                                <tr style="cursor: pointer;" class="text-left">
-                                    <td><?php echo $patient['pay_date'] ?></td>
-                                    <td><?php echo $patient['firstname'] ?></td>
-                                    <td><?php echo $patient['lastname'] ?></td>
-                                    <td><?php echo $patient['disease'] ?></td>
-                                    <td><a class="btn btn-primary border-0" href="patients_detail.php?id=<?php echo $patient['patient_id'] ?>">View</a></td>
-                                    <td><a class="btn btn-primary border-0" href="edit.php?id=<?php echo $patient['patient_id'] ?>">Edit</a></td>
-                                    <td><a class="btn btn-primary border-0" href="main.php?id=<?php echo $patient['patient_id'] ?>">Delete</a></td>
-                                </tr>
-                            <?php } ?>
-                        </tbody>
-                    </table>
+                                </th>
+                            </thead>
+                            <tbody>
+                                <?php while ($patient = mysqli_fetch_array($result)) { ?>
+                                    <tr style="cursor: pointer;" class="text-left">
+                                        <td><?php echo $patient['pay_date'] ?></td>
+                                        <td><?php echo $patient['firstname'] ?></td>
+                                        <td><?php echo $patient['lastname'] ?></td>
+                                        <td><?php echo $patient['disease'] ?></td>
+                                        <td><a class="btn btn-primary border-0" href="patients_detail.php?id=<?php echo $patient['patient_id'] ?>">View</a></td>
+                                        <td><a class="btn btn-primary border-0" href="edit.php?id=<?php echo $patient['patient_id'] ?>">Edit</a></td>
+                                        <td><a class="btn btn-primary border-0" href="main.php?id=<?php echo $patient['patient_id'] ?>">Delete</a></td>
+                                    </tr>
+                                <?php } ?>
+                            </tbody>
+                        </table>
+                    <?php  } ?>
                     <hr>
                     <?php if ($number_rows > 1) { ?>
                         <h4 class="lead text-primary"><b>Number of patients:&nbsp;<?php echo $number_rows; ?></b></h4>
                     <?php } elseif ($number_rows == 0) { ?>
-                        <h4 class="lead text-danger"><b>No records found</b></h4>
+
                     <?php } else { ?>
                         <h4 class="lead"><b>Number of patient:&nbsp;<?php echo $number_rows; ?></b></h4>
                     <?php } ?>

@@ -7,7 +7,7 @@ $sql_statement = "SELECT * FROM patients";
 $result = mysqli_query($connection, $sql_statement);
 $number_rows = mysqli_num_rows($result);
 
-if (isset($_POST['delAll'])) {
+if (isset($_GET['delete_all'])) {
     $all = "DELETE FROM patients";
     $deletall = mysqli_query($connection, $all);
     if ($deletall == true) {
